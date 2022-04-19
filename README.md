@@ -7,7 +7,7 @@ This repository is intended to maintain transparency about changes in our privac
 **Current Version:** [12/April/2022](/12-apr-2022)
 
 ## All Versions:
-[12/April/2022](/12-apr-2022) | [(Wayback Machine Copy)](https://web.archive.org/web/20220412113554/https://privacy.pks.ai/12-apr-2022)
+- [12/April/2022](/12-apr-2022) | [(Wayback Machine Copy)](https://web.archive.org/web/20220412113554/https://privacy.pks.ai/12-apr-2022)
 
 
 ---
