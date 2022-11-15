@@ -3,7 +3,7 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 
-<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+<link href='https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
 .mac-os-11 { --title-bar-height: 28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
@@ -202,1148 +202,535 @@ mark .md-meta { color: rgb(0, 0, 0); }
 mjx-container { break-inside: avoid; }
 
 
-/*https://github.com/AntonVanke/Typora-Cement-Theme*/
-/*
-字体  Font: SourceHanSans
-LICENSE: https://github.com/adobe-fonts/source-han-sans/blob/master/LICENSE.txt
-*/
-/*
-代码块字体  Code block font: Fira Code
-LICENSE: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
-*/
-@media print {
-    :root {
-        --bg-color: var(--write-bg-color) !important;
-    }
+@include-when-export url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-    html, body {
-        background: var(--write-bg-color) !important;
+/* open-sans-regular - latin-ext_latin */
+
+/* open-sans-italic - latin-ext_latin */
+
+/* open-sans-700 - latin-ext_latin */
+
+/* open-sans-700italic - latin-ext_latin */
+
+:root {
+    --title-color: #141622;
+    --text-color: #444444;
+    --light-text-color: #666666;
+    --lighter-text-color: #888888;
+    --link-color: #F76497;
+    --code-color: #1976D2;
+    --shadow-color: #eee;
+    --border-quote: rgba(116, 95, 181, 0.2);
+    --border: #e7e7e7;
+    --link-bottom: #bbb;
+    --shadow: 3px 3px 10px var(--shadow-color);
+    --inline-code-bg: #f4f2f9;
+    --header-weight: normal;
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: var(var(--light-text-color));
+    --active-file-text-color: var(--title-color);
+    --active-file-bg-color: var(--shadow-color);
+    --item-hover-bg-color: var(--shadow-color);
+    --active-file-border-color: var(var(--title-color));
+    --base-font: "Trebuchet MS", -apple-system, Ubuntu, "Microsoft YaHei", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "Noto Sans CJK SC", "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC", "Source Han Sans CN", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", "Source Sans Pro", sans-serif;
+    --title-font: "Noto Sans", Georgia, "EB Garamond", "Noto Serif CJK SC", "Nimbus Roman No9 L", "Songti SC", "Source Han Serif SC", "Source Han Serif CN", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU, "Ubuntu", "Source Sans Pro", serif;
+    --monospace: "JetBrains Mono", "Fira Code", "Cascadia Code", "Sarasa Term SC", Monaco, "Deja Vu Sans Mono", Consolas, "Lucida Console", "Andale Mono", "Roboto Mono", Courier, Monospace !important;
+  }
+
+@media print {
+    html {
+        font-size: 0.9rem;
     }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+    #write {
+        max-width: 100%;
+    }
+    @page {
+        size: A4;
+        /* PDF output size */
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: initial;
 }
 
 body {
-    background: var(--bg-color);
-    font: 105%/1.65 var(--font-family-base);
-    max-width: 950px;
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    letter-spacing: 0;
+    overflow-x: hidden;
 }
 
-/* 内容沉底 */
-content {
-    bottom: 0 !important;
-}
 
-.ty-footer {
-    background-color: transparent !important;
-    border: 0 !important;
-    right: 12px !important;
-}
-
-/* 使左侧边栏统一 */
-.sidebar-menu {
-    border: none !important;
-}
-
-/* 调整条 */
-.typora-sidebar-resizer-bar:hover {
-    border-right: 2px dashed var(--color-black);
-}
 
 #write {
-    border-radius: var(--hover-radius);
-    margin: 16px 16px 10% 16px;
-    background: var(--write-bg-color);
-    transition-duration: 0.3s;
-    transform: perspective(1px) translateZ(0);
-    transition-property: padding;
-    /*max-width: 950px;*/
-    /*margin: 16px auto 10%;*/
+    font-family: var(--base-font);
+    /* max-width: 914px; */
+    margin: 0 auto;
+    padding: 1rem 4rem;
+    padding-bottom: 100px;
 }
 
-/* 写作区域宽度自适应 */
-@media (min-width: 1000px) {
-    #write {
-        padding-left: 64px;
-        padding-right: 64px;
-        /*margin-left: 10%;*/
-        /*margin-right: 10%;*/
-    }
+#write p {
+    line-height: 1.6rem;
+    word-spacing: 0.05rem;
 }
 
-@media (min-width: 1270px) {
-    #write {
-        padding-left: 128px;
-        padding-right: 128px;
-        /*margin-left: 15%;*/
-        /*margin-right: 15%;*/
-    }
+body>*:first-child {
+    margin-top: 0 !important;
 }
 
-/* 底部结束 */
-/* #write::after {
-    content: "Everything has changed";
-    color: var(--text-color);
-    font-size: .8rem;
-    font-style: italic;
-    height: 1rem !important;
-    text-shadow: 2px 2px 4px rgb(0 0 0 / 20%);
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translate(-50%);
-    z-index: 5;
-} */
+body>*:last-child {
+    margin-bottom: 0 !important;
+}
 
-/*标题*/
-#write h1,
-#write h2,
-#write h3,
-#write h4,
-#write h5,
-#write h6 {
+
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+#write a {
+    border-bottom: 1px solid var(--link-bottom);
+}
+
+.md-content {
+    color: var(--light-text-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: var(--header-weight);
+    line-height: 1.3;
+    cursor: text;
     color: var(--title-color);
-    font-family: var(--font-family-base);
-    font-weight: 700;
-    line-height: 1.25;
-    margin: 0 0 1rem 0;
+    font-family: var(--title-font);
 }
 
-#write h1 {
-    font-size: 3rem;
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.5;
 }
 
-#write h2 {
-    font-size: 1.6rem;
+h1:after {
+    content: "";
+    display: block;
+    margin: 0.2rem auto 0;
+    width: 6rem;
+    height: 2px;
+    border-bottom: 2px solid var(--title-color);
 }
 
-#write h3 {
-    font-size: 1.2rem;
+h2 {
+    padding-left: 0.4em;
+    border-left: 0.4em solid var(--title-color);
+    border-bottom: 1px solid var(--title-color);
 }
 
-#write h4 {
-    font-size: 1rem;
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
 }
 
-#write h5 {
-    font-size: 0.85rem;
-}
-
-#write h6 {
-    font-size: 0.8rem;
-}
-
-#write .md-heading:before {
-    color: var(--md-heading-before-color);
-}
-
-/*表格*/
-#write table:not(.md-grid-board) {
-    /* background-color: var(--table-first-bg-color); */
-    border: 1px solid var(--table-border-color);
-    margin: 20px 0;
-    border-collapse: separate;
-    border-radius: var(--hover-radius);
-}
-
-
-#write table:not(.md-grid-board) td {
-    padding: 12px 24px;
-    border-left: 1px dashed var(--table-border-color);
-    border-bottom: 1px dashed var(--table-border-color);
-    transition: background-color 0.3s ease-out;
-}
-
-#write table:not(.md-grid-board) th {
-    padding: 12px 24px;
-    border-left: 1px solid var(--table-border-color);
-    border-bottom: 1px solid var(--table-border-color);
-    transition: background-color 0.3s ease-out;
-}
-
-#write table thead tr {
-    background-color: var(--table-first-bg-color);
-}
-
-#write table:not(.md-grid-board) td:hover,
-#write table:not(.md-grid-board) th:hover {
-    background-color: rgba(0, 0, 0, .1);
-    text-shadow: 2px 2px 4px rgb(0 0 0 / 20%);
-}
-
-#write table:not(.md-grid-board) tr td:first-child,
-#write table:not(.md-grid-board) tr th:first-child {
-    border-left: 0;
-}
-
-#write table:not(.md-grid-board) tr:last-child td {
-    border-bottom: 0;
-}
-
-/* 左上角表格 */
-#write table:not(.md-grid-board) tr:first-child th:first-child {
-    border-top-left-radius: var(--hover-radius);
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
 }
 
 
-/* 右上角表格 */
-#write table:not(.md-grid-board) tr:first-child th:last-child {
-    border-top-right-radius: var(--hover-radius);
+/* horizontal rule */
+
+hr {
+    margin: 1.5em auto;
+    border-top: 1px solid var(--border);
 }
 
-/* 左下角表格 */
-#write table:not(.md-grid-board) tr:last-child td:first-child {
-    border-bottom-left-radius: var(--hover-radius);
+
+
+li>ol,
+li>ul {
+    margin: 0 0;
 }
 
-/* 右下角表格 */
-#write table:not(.md-grid-board) tr:last-child td:last-child {
-    border-bottom-right-radius: var(--hover-radius);
+li p.first {
+    display: inline-block;
 }
 
-/*
-#write table:not(.md-grid-board):hover {
-    border-radius: var(--hover-radius);
-}
-#write table:not(.md-grid-board) tr:first-child th:first-child:hover {
-    border-top-left-radius: var(--hover-radius);
+ul,
+ol {
+    padding-left: 2rem;
 }
 
-#write table:not(.md-grid-board) tr:first-child th:last-child:hover {
-    border-top-right-radius: var(--hover-radius);
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
 }
 
-#write table:not(.md-grid-board) tr:last-child td:first-child:hover {
-    border-bottom-left-radius: var(--hover-radius);
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
 }
 
-#write table:not(.md-grid-board) tr:last-child td:last-child:hover {
-    border-bottom-right-radius: var(--hover-radius);
-}
-*/
-/* 下方控制条 */
-footer {
-    padding-left: 15px;
+#write ol li,
+ul li {
+    padding-left: 0.1rem;
 }
 
-/*详细菜单*/
-content .dropdown-menu {
-    border-radius: 5px;
-    background: var(--dropdown-menu-color);
-    box-shadow: 0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%);
+
+
+blockquote {
+    border-left: 0.3rem solid var(--border-quote);
+    padding-left: 1em;
+    font-family: var(--base-font);
 }
 
-/* 详细菜单的分割线 */
-.dropdown-menu .divider {
-    border-top: 1px solid #ebebeb;
-    margin-top: 6px;
-    margin-bottom: 6px;
-}
 
-/* 表格编辑条 */
-.ty-table-edit {
-    /*overflow: hidden;*/
-    /*width: 30px !important;*/
-    /*height: 30px;*/
-    background: var(--color-white);
-    border-radius: 15px;
-    /*padding-left: 0;*/
-    border: 1px solid var(--table-border-color);
-    /*transition: width .5s ease-in-out, overflow 1s ease-in;*/
-    box-shadow: 0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%);
-}
 
-/*.ty-table-edit:hover {*/
-/*    width: 40% !important;*/
-/*    overflow: visible;*/
-/*}*/
-
-/* 表格编辑条按钮 */
-.ty-table-edit button {
-    margin: 0 10px !important;
-    padding: 5px !important;
-    border-radius: 5px !important;
-}
-
-/* 表格编辑条按钮状态 */
-.ty-table-edit button:active,
-.ty-table-edit button:hover,
-.ty-table-edit button.active {
-    background: none !important;
-    border: none !important;
-    box-shadow: 0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%);
-}
-
-/*段落*/
-#write > p,
-#write > pre,
-#write > ul {
+table {
     margin-bottom: 1.25rem;
 }
 
-/* mark 高亮 */
-mark {
-    background: var(--mark-bg-color) !important;
-    border-radius: 1em !important;
-    color: var(--mark-text-color);
+table th,
+table td {
+    padding: 8px;
+    line-height: 1.25rem;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+}
+
+table th {
+    font-weight: bold;
+}
+
+table thead th {
+    vertical-align: middle;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fcfcfc;
+}
+
+
+
+#write strong {
+    padding: 0 2px;
+    font-weight: bold;
+}
+
+
+/* inline code */
+code,
+tt {
     padding: 2px 4px;
-    margin: 1px 2px;
-    font-weight: 500;
-    transform: perspective(1px) translateZ(0);
-    transition-duration: 0.2s;
-    transition-property: padding, margin;
+    border-radius: 0.3rem;
+    font-family: var(--monospace);
+    font-size: 0.9rem;
+    color: var(--code-color);
+    background-color: var(--inline-code-bg);
+    margin: 0 2px;
 }
 
-/* 高亮 hover */
-mark:hover {
-    padding: 4px 8px;
-    margin: 2px 4px;
+#write .md-footnote {
+    color: var(--code-color);
+    background-color: var(--inline-code-bg);
 }
 
-mark span {
-    white-space: nowrap;
-}
 
-/*行内代码*/
-#write :not(pre) > code {
-    font-family: var(--font-family-monospace);
-    font-weight: 300;
-    color: var(--inline-code-color);
-    padding: 0 4px;
-}
+/* highlight */
 
-#write :not(pre) > code:hover {
-    color: var(--color-tertiary);
-}
-
-/*行内公式预览*/
-
-#math-inline-preview .md-arrow {
-    opacity: .3;
-}
-
-#math-inline-preview #math-inline-preview-content {
-    color: var(--color-on-primary-container);
-}
-
-/*链接*/
-a {
-    font-weight: 700;
-    color: var(--link-color);
-    text-decoration: none;
-    transform: perspective(1px) translateZ(0);
-    transition-duration: 0.2s;
-    transition-property: transform;
-}
-
-a:hover {
-    color: var(--link-color);
-    text-decoration: underline;
-}
-
-/*yaml标签*/
-.md-meta-block {
-    background: var(--meta-block-bg-color) !important;
-    color: var(--meta-block-font-color);
-    margin: 20px 0;
-    padding: 12px 24px;
-    overflow: auto;
-    border-radius: var(--radius);
-    transform: perspective(1px) translateZ(0);
-    transition-duration: 0.2s;
-    transition-property: border-radius;
-}
-
-.md-meta-block:hover {
-    border-radius: var(--hover-radius);
-}
-
-/*Latex*/
-.md-hover-tip .md-arrow:after {
-    background: var(--color-secondary-container);
-
-}
-
-.md-hover-tip .code-tooltip-content {
-    background: var(--color-secondary-container);
-}
-
-/*角标*/
-sup.md-footnote {
-    background: transparent;
-    color: var(--link-color);
-}
-
-/*目录*/
-.md-toc {
-    font-size: 0.95rem;
-}
-
-/*引用*/
-blockquote {
-    color: var(--blockquote-font-color);
-    background-color: var(--blockquote-bg-color);
-    border-radius: 12px;
-    padding: 1.5rem 1rem;
-    transform: perspective(1px) translateZ(0);
-    transition-duration: 0.2s;
-    transition-property: border-radius;
-}
-
-blockquote:hover {
-    border-radius: 24px;
-}
-
-/* 图片 FIXME: 无法显示 */
-#write img::after {
-    content: attr(alt);
+#write mark {
+    background: rgb(255, 255, 196);
     color: var(--text-color);
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    z-index: 999;
 }
 
-/* 复选框 */
-#write input[type=checkbox] {
-    cursor: inherit;
-    height: 100%;
-    width: 1rem;
-    margin: 0 -30px;
-    z-index: 1;
+#write del {
+    padding: 1px 2px;
 }
 
-/*
- 侧边栏
-*/
-#outline-content::-webkit-scrollbar,
-#file-library::-webkit-scrollbar {
-    display: none;
+.md-task-list-item>input {
+    margin-left: -1.3em;
 }
 
-#outline-content .outline-item,
-.file-library-file-node {
-    border-radius: 0 16px 16px 0;
-    margin-left: -28px;
-    margin-right: 0 !important;
-    text-overflow: ellipsis;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-left: 28px solid transparent;
-    border-right: 28px solid transparent;
-    transition: border-radius, width .15s cubic-bezier(0.4, 0, 0.2, 1), margin .15s cubic-bezier(0.4, 0, 0.2, 1), width .15s cubic-bezier(0.4, 0, 0.2, 1);
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
 }
 
-#outline-content .outline-item:hover,
-.file-library-file-node:hover {
-    opacity: 1 !important;
-    border-radius: 0 16px 16px 0;
-    background-color: var(--sidebar-hover-bg-color);
+.mathjax-block>.code-tooltip {
+    bottom: 0.375rem;
 }
 
-#outline-content .outline-item-active,
-.file-library-file-node.active {
-    border-radius: 0 16px 16px 0;
-    background-color: var(--sidebar-active-bg-color);
+
+
+.md-image>.md-meta {
+    border-radius: 3px;
+    font-family: var(--monospace);
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
 }
 
-#outline-content .outline-item:not(.outline-item-active),
-.file-library-file-node:not(.active) {
-    opacity: .6;
-}
 
-#file-library-list .file-list-item:hover {
-    opacity: 1 !important;
-    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
-}
 
-#file-library-list .file-list-item:not(.active) {
-    opacity: .6;
-}
 
-#file-library-list .file-list-item.active {
-    background-color: var(--sidebar-active-bg-color);
-}
-
-/* 树文件列表 */
-.file-tree-node.active > .file-node-background {
-    border: none !important;
-    background: none !important;
-}
-
-/* .use-file-tree-style .file-library-file-node:hover {
-    opacity: 1 !important;
-    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+/* p .md-image:only-child {
+  width: auto;
+  text-align: left;
+  margin-left: 2rem;
 } */
 
-/* 搜索框 */
-.file-library-search {
-    height: 60px;
 
+
+img[alt|="shadow"] {
+    box-shadow: var(--shadow);
 }
 
-#file-library-search-panel {
-    padding-bottom: 10px;
+
+/* TOC */
+
+#write a.md-toc-inner {
+    line-height: 1.6;
+    white-space: pre-line;
+    border-bottom: none;
+    color: var(--light-text-color);
+    font-size: 0.9rem;
 }
 
-#file-library-search-input {
-    opacity: .8;
-    padding: 10px 10px;
-    background-color: var(--sidebar-active-bg-color);
-    border-radius: 8px;
-    border: 1px solid transparent;
-    transition: background, padding 200ms ease-in, width 200ms ease-out;
+.md-toc-h1 .md-toc-inner {
+    margin-left: 0;
+    font-weight: normal;
 }
 
-#file-library-search-input:focus {
-    background: var(--file-library-search-input-focus-color);
-    padding: 15px 10px;
-    border: 1px solid transparent;
-    box-shadow: 0 1px 1px 0 rgb(65 69 73 / 30%), 0 1px 3px 1px rgb(65 69 73 / 15%);
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: var(--base-font);
 }
 
-#close-outline-filter-btn,
-#filesearch-word-option-btn,
-#filesearch-regexp-option-btn,
-#filesearch-case-option-btn {
-    transition: padding 200ms ease-in-out;
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
 }
 
-#file-library-search-input:focus ~ #close-outline-filter-btn,
-#file-library-search-input:focus ~ #filesearch-word-option-btn,
-#file-library-search-input:focus ~ #filesearch-regexp-option-btn,
-#file-library-search-input:focus ~ #filesearch-case-option-btn {
-    padding-top: 5px;
-    text-shadow: 2px 2px 4px rgb(0 0 0 / 20%);
+.md-lang {
+    color: #b4654d;
 }
 
-/* 提示界面 */
-.no-collapse-outline.ty-show-notification.unibody-window content,
-.no-collapse-outline.ty-show-notification.unibody-window content #typora-source,
-.no-collapse-outline.ty-show-notification content,
-.no-collapse-outline.ty-show-notification content #typora-source {
-    top: 28px !important;
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #e6f0fe;
 }
 
-.native-window.ty-show-notification.unibody-window content,
-.native-window.ty-show-notification.unibody-window content #typora-source,
-.native-window.ty-show-notification content,
-.native-window.ty-show-notification content #typora-source {
-    top: 0 !important;
-}
 
-.md-notification-container {
-    display: flex;
-    top: 10%;
-    width: 30%;
-    left: 70% !important;
-    padding-top: 0 !important;
-    border-right: 5px solid var(--color-primary);
-    background-color: var(--bg-color);
-    flex-direction: row;
-    border-top-left-radius: var(--hover-radius);
-    border-bottom-left-radius: var(--hover-radius);
-    box-shadow: 0 1px 1px 0 rgb(65 69 73 / 30%), 0 1px 3px 1px rgb(65 69 73 / 15%);
-}
+/* Code fences */
 
-.md-notification-container .md-notification-content {
-    display: block;
-}
 
-.md-notification-container .btn-default {
-    background: none;
-    color: var(--link-color);
-    margin-right: 30px;
-}
+/* border, bg, font */
 
-/*TODO:导出时的动画*/
-/*.md-notification-container #md-notification div {*/
-/*    display: block !important;*/
-/*}*/
-
-/* 模态框 */
-#common-dialog.modal {
-    overflow-y: hidden;
-    background-color: rgba(55, 55, 55, .4);
-}
-
-.modal .modal-dialog {
-
-    margin: 30% auto;
-}
-
-.modal .modal-content {
-    border-radius: var(--hover-radius);
-    padding: 10px;
-}
-
-.modal .modal-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-
-.modal .btn {
-    color: var(--link-color);
-    background: none;
-}
-
-.modal .btn:hover {
-    font-weight: 600;
-}
-
-.modal .btn:focus {
-    outline: thin dotted;
-}
-
-/*-----------------------------------------
-设置页面
------------------------------------------ */
-.megamenu-menu-header {
-    border: none;
-    color: var(--text-color);
-}
-
-.megamenu-menu-header #megamenu-back-btn,
-.megamenu-menu-header .megamenu-menu-header-title-back,
-.megamenu-menu-header .megamenu-menu-header-title-menu {
-    color: var(--text-color);
-}
-
-.megamenu-menu-header:hover #megamenu-back-btn {
-    color: var(--link-color);
-}
-
-.megamenu-menu {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    box-shadow: none !important;
-}
-
-.megamenu-menu #m-saved i {
-    display: none !important;
-}
-
-/* 没有保存时 */
-.megamenu-menu #m-save {
-    color: var(--color-error);
-}
-
-/* 已保存 */
-.megamenu-menu #m-saved {
-    color: var(--color-primary);
-}
-
-.megamenu-menu-list a {
-    padding-top: 0;
-    border-radius: 0 16px 16px 0;
-    border-left: 28px solid transparent;
-    border-right: 28px solid transparent;
-    transition: border-radius, width .15s cubic-bezier(0.4, 0, 0.2, 1), margin .15s cubic-bezier(0.4, 0, 0.2, 1), width .15s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.megamenu-menu-list {
-    background-color: var(--bg-color);
-}
-
-.megamenu-menu-list a:hover,
-.file-library-file-node:hover {
-    opacity: 1 !important;
-    border-radius: 0 16px 16px 0;
-    background-color: var(--sidebar-hover-bg-color) !important;
-}
-
-.megamenu-menu-list a.active {
-    border-radius: 0 16px 16px 0;
-    background-color: var(--sidebar-active-bg-color) !important;
-}
-
-.megamenu-menu-list a:not(.active) {
-    opacity: .6;
-}
-
-/* 主内容区 */
-header {
-    background-color: var(--bg-color);
-    background-image: none !important;
-}
-
-#megamenu-content {
-    background-color: var(--bg-color);
-    background-image: none !important;
-}
-
-.megamenu-section#megamenu-section-open {
-    margin: 40px 20px;
-    padding: 20px;
-    /* background-color: var(--write-bg-color); */
-    border-radius: var(--hover-radius);
-}
-
-.megamenu-section .long-btn {
-    border-radius: 50px;
-    background: var(--long-btn-color);
-    box-shadow: var(--long-btn-normal);
-    margin: 30px;
-    border: none;
-}
-
-.megamenu-section .long-btn:hover {
-    border-radius: 50px;
-    background: var(--long-btn-hover-bg);
-    box-shadow: var(--long-btn-hover);
-}
-
-.megamenu-section .long-btn:active {
-    border-radius: 50px;
-    background: #e6eef4;
-    box-shadow: inset 5px 5px 10px #c4cacf,
-    inset -5px -5px 10px #ffffff;
-}
-
-/* 搜索框 */
-#recent-file-panel-search-input {
-    opacity: .8;
-    margin: 10px 0;
-    padding: 10px 10px;
-    background-color: var(--sidebar-active-bg-color);
-    border-radius: 8px;
-    border: 1px solid transparent;
-    transition: background, padding 200ms ease-in, width 200ms ease-out;
-}
-
-#recent-file-panel-search-input:focus {
-    background: var(--file-library-search-input-focus-color);
-    padding: 20px 10px;
-    border: 1px solid transparent;
-    box-shadow: 0 1px 1px 0 rgb(65 69 73 / 30%), 0 1px 3px 1px rgb(65 69 73 / 15%);
-}
-
-#recent-file-panel-action-btn-container {
-    margin-right: 30px;
-    transition: background, padding 200ms ease-in, width 200ms ease-out;
-}
-
-#recent-file-panel-search-input:focus + #recent-file-panel-action-btn-container {
-    padding-top: 5px;
-}
-
-#recent-file-panel-action-btn {
-    color: var(--text-color);
-    outline: none;
-    border-radius: 19px;
-    background: var(--long-btn-color);
-    box-shadow: var(--recent-file-panel-action-btn);
-    margin-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border: none;
-}
-
-#recent-file-panel-action-btn:hover {
-    border-radius: 19px;
-    background: var(--recent-file-panel-action-btn-hover-bg);
-    box-shadow: var(--recent-file-panel-action-btn-hover);
-    margin-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border: none;
-}
-
-#recent-file-panel-action-btn:active {
-    border-radius: 19px;
-    background: var(--long-btn-color);
-    box-shadow: var(--recent-file-panel-action-btn-active-bg);
-    margin-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border: none;
-}
-
-/* 最近文件列表 */
-.recent-file-item:hover {
-    color: var(--color-black);
-    font-weight: 400;
-}
-#recent-file-panel tbody tr:nth-child(2n-1){
-    color: var(--recent-file-panel-n-color);
-}
-
-/*
-导出网页 TODO
-*/
-.typora-export .outline-item-wrapper {
-    border-radius: 0 16px 16px 0;
-    margin-left: -28px;
-    margin-right: 0 !important;
-    text-overflow: ellipsis;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-left: 28px solid transparent;
-    border-right: 28px solid transparent;
-    transition: border-radius, width .15s cubic-bezier(0.4, 0, 0.2, 1), margin .15s cubic-bezier(0.4, 0, 0.2, 1), width .15s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.typora-export .outline-item-wrapper:hover {
-    opacity: 1 !important;
-    border-radius: 0 16px 16px 0;
-    background-color: var(--sidebar-hover-bg-color);
-}
-
-.typora-export .outline-item-active {
-    border-radius: 0 16px 16px 0;
-    background-color: var(--sidebar-active-bg-color);
-}
-
-.typora-export .outline-item-wrapper:not(.outline-item-active) {
-    opacity: .6;
-}
-
-body.typora-export {
-    max-width: none !important;
-}
-
-/*防止超链接点不到*/
-.typora-export .outline-item-wrapper .outline-label {
-    width: 100%;
-}
-
-/*
-Mac 上的一些细节优化
-*/
-/*Macos 的侧边栏边框*/
-.mac-os-11 .sidebar-tabs {
-    border-bottom: none !important;
-}
-
-/*侧边栏搜索框*/
-.mac-os-11 #file-library-search-input {
-    padding: 5px 10px;
-}
-
-.mac-os-11 #file-library-search-input:focus {
-    padding: 10px 10px;
-}
-
-.mac-os-11 #ty-sidebar-search-back-btn {
-    padding-top: 3px;
-}
-
-.mac-os-11 #file-library-search-input:focus ~ #ty-sidebar-search-back-btn {
-    padding-top: 8px;
-}@import "";
-
-:root {
-    /*
-    Color
-    Material 3 标准颜色
-    */
-    --color-white: #fff;
-    --color-black: #000;
-
-    --color-primary: #6750A4;
-    --color-on-primary: #FFFFFF;
-    --color-primary-container: #EADDFF;
-    --color-on-primary-container: #21005D;
-
-    --color-secondary: #625B71;
-    --color-on-secondary: #FFFFFF;
-    --color-secondary-container: #EADDFF;
-    --color-on-secondary-container: #1D192B;
-
-    --color-tertiary: #7D5260;
-    --color-on-tertiary: #FFFFFF;
-    --color-tertiary-container: #FFD8E4;
-    --color-on-tertiary-container: #31111D;
-
-    --color-error: #B3261E;
-    --color-on-error: #FFFFFF;
-    --color-error-container: #F9DEDC;
-    --color-on-error-container: #410E0B;
-
-    /*
-    系统变量
-    Typora base.css/base-control.css/windows.css 所带的变量
-    */
-    /* 背景颜色 */
-    --bg-color: #202124;
-    /* 文字颜色 */
-    --text-color: #f5f5f5;
-    /* 选择的文字背景颜色 */
-    --select-text-bg-color: #B5D6FC;
-    /* 选择的文字颜色 */
-    --select-text-font-color: auto;
-    /* 侧边栏颜色 */
-    --side-bar-bg-color: var(--bg-color);
-    /* 菜单边框 */
-    --window-border: 1px solid #e9e9e9;
-    /* 侧边栏活跃文件背景颜色 */
-    --active-file-bg-color: #eee;
-    /* 侧边栏活跃文件文字颜色 */
-    --active-file-text-color: inherit;
-    /* 侧边栏活跃文件边框颜色 */
-    --active-file-border-color: #777;
-    /* 侧边栏宽度 */
-    --sidebar-width: 256px;
-    /*代码块背景*/
-    --code-block-bg-color: #272822;
-    /*latex背景*/
-    --rawblock-edit-panel-bd: var(--code-block-bg-color);
-
-    /*
-    主题变量
-    主题所设置的变量
-    */
-    /* 基础字体 */
-    --font-family-base: "思源黑体 CN", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    /*等宽代码字体*/
-    --font-family-monospace: "Fira Code", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    /* 编辑区背景颜色 */
-    --write-bg-color: rgba(51, 51, 51, 0.8);
-    /* 圆角 */
-    --radius: 5px;
-    /* 圆角 hover */
-    --hover-radius: 24px;
-    /* 标题颜色 */
-    --title-color: var(--color-white);
-    /* 链接颜色 */
-    --link-color: #0e82c2;
-    /* 标题前的指示标志 */
-    --md-heading-before-color: var(--link-color);
-    /*右键菜单*/
-    --dropdown-menu-color: var(--color-black);
-    /*菜单按钮*/
-    --long-btn-color: #202020;
-    --long-btn-normal: 10px 10px 20px #1b1b1b, -10px -10px 20px #252525;
-    --long-btn-hover: 5px 5px 10px #1b1b1b, -5px -5px 10px #252525;
-    --long-btn-hover-bg: linear-gradient(145deg, #1d1d1d, #222222);
-    --recent-file-panel-action-btn: 4px 4px 9px #1b1b1b, -4px -4px 9px #252525;
-    --recent-file-panel-action-btn-hover: 4px 4px 9px #1b1b1b, -4px -4px 9px #252525;
-    --recent-file-panel-action-btn-hover-bg: linear-gradient(145deg, #1d1d1d, #222222);
-    --recent-file-panel-action-btn-active-bg: inset 4px 4px 9px #1b1b1b, inset -4px -4px 9px #252525;
-
-    /*高亮背景颜色*/
-    --mark-bg-color: var(--color-tertiary);
-    /*高亮文字颜色*/
-    --mark-text-color: var(--color-white);
-    /* 引用字体颜色 */
-    --blockquote-font-color: var(--color-white);
-    /* 引用背景颜色 */
-    --blockquote-bg-color: #9c8fb0;
-
-
-    /* 行内代码颜色 */
-    --inline-code-color: #03d2c1;
-    /*表格首行背景颜色*/
-    --table-first-bg-color: #1a1a16;
-    /*表格其他行背景颜色*/
-    /* --table-other-bg-color: var(--color-tertiary-container); */
-
-    /* 表格边框颜色  */
-    --table-border-color: #e1e3e1;
-
-    /* YAML 背景颜色 */
-    --meta-block-bg-color: var(--color-tertiary-container);
-    /* YAML 文字颜色 */
-    --meta-block-font-color: var(--color-on-tertiary-container);
-
-    /* active 背景 */
-    --sidebar-active-bg-color: rgba(255, 255, 255, .3);
-    /* --sidebar-active-bg-color: #fce8e6; */
-    /* hover 背景 */
-    --sidebar-hover-bg-color: rgba(255, 255, 255, 0.4);
-
-    /*搜索栏 focus 颜色*/
-    --file-library-search-input-focus-color: var(--color-black);
-    /*最近文件单数背景*/
-    --recent-file-panel-n-color: #272727;
-}
-
-/*
-代码块
-*/
 .md-fences {
-    background-color: var(--code-block-bg-color);
-    border-radius: var(--radius);
-    transform: perspective(1px) translateZ(0);
-    transition-duration: 0.3s;
-    transition-property: border-radius, padding, box-shadow;
-    transition-timing-function: ease-in-out;
-    /*box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);*/
-    /*box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .2);*/
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: #fdfdfd !important;
+    font-size: 0.9rem;
 }
 
-/* .md-fences:hover::before {
-    content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDU0IDE0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSAxKSI+CiAgICAgICAgPGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjYiIGZpbGw9IiNGRjVGNTYiIHN0cm9rZT0iI0UwNDQzRSIgc3Ryb2tlLXdpZHRoPSIuNSI+PC9jaXJjbGU+CiAgICAgICAgPGNpcmNsZSBjeD0iMjYiIGN5PSI2IiByPSI2IiBmaWxsPSIjRkZCRDJFIiBzdHJva2U9IiNERUExMjMiIHN0cm9rZS13aWR0aD0iLjUiPjwvY2lyY2xlPgogICAgICAgIDxjaXJjbGUgY3g9IjQ2IiBjeT0iNiIgcj0iNiIgZmlsbD0iIzI3QzkzRiIgc3Ryb2tlPSIjMUFBQjI5IiBzdHJva2Utd2lkdGg9Ii41Ij48L2NpcmNsZT4KICAgIDwvZz4KPC9zdmc+');
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    z-index: 5;
+
+
+
+/* #write pre.md-fences {
+  display: block;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: var(--shadow);
 } */
 
-/* .md-fences:hover::before {
-    content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTQiIGhlaWdodD0iMTQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8Y2lyY2xlIGlkPSJzdmdfMiIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZT0iI0UwNDQzRSIgZmlsbD0iI0ZGNUY1NiIgcj0iNiIgY3k9IjciIGN4PSI2LjgwNzY5MyIvPgogICAgPGNpcmNsZSBpZD0ic3ZnXzMiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2U9IiNERUExMjMiIGZpbGw9IiNGRkJEMkUiIHI9IjYiIGN5PSI3IiBjeD0iMjYuODA3NjkzIi8+CiAgICA8Y2lyY2xlIGlkPSJzdmdfNCIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZT0iIzFBQUIyOSIgZmlsbD0iIzI3QzkzRiIgcj0iNiIgY3k9IjciIGN4PSI0Ni44MDc2OTMiLz4KICAgIDxsaW5lIHRyYW5zZm9ybT0icm90YXRlKDQ1IDYuNzM4NTUxNjE2NjY4NzA2LDcuMDg3MTQwNTYwMTUwMTQ2KSAiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLWxpbmVjYXA9Im51bGwiCiAgICAgICAgICBzdHJva2UtbGluZWpvaW49Im51bGwiIGlkPSJzdmdfMTMiIHkyPSI3LjA4NzE0MSIgeDI9IjExLjU3MzIyMiIgeTE9IjcuMDg3MTQxIiB4MT0iMS45MDM4ODIiCiAgICAgICAgICBmaWxsLW9wYWNpdHk9Im51bGwiIHN0cm9rZS1vcGFjaXR5PSJudWxsIiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB0cmFuc2Zvcm09InJvdGF0ZSgtNDUgNi43Mzg1NTE2MTY2Njg3MDIsNy4wODcxNDA1NjAxNTAxNDYpICIgc3Ryb2tlPSIjNTU1IiBzdHJva2UtbGluZWNhcD0ibnVsbCIKICAgICAgICAgIHN0cm9rZS1saW5lam9pbj0ibnVsbCIgaWQ9InN2Z18xNSIgeTI9IjcuMDg3MTQxIiB4Mj0iMTEuNTczMjIyIiB5MT0iNy4wODcxNDEiIHgxPSIxLjkwMzg4MiIKICAgICAgICAgIGZpbGwtb3BhY2l0eT0ibnVsbCIgc3Ryb2tlLW9wYWNpdHk9Im51bGwiIGZpbGw9Im5vbmUiLz4KICAgIDxsaW5lIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLWxpbmVjYXA9Im51bGwiIHN0cm9rZS1saW5lam9pbj0ibnVsbCIgaWQ9InN2Z18xNiIgeTI9IjcuMDg3MTQxIiB4Mj0iMzEuNzY1NTAzIgogICAgICAgICAgeTE9IjcuMDg3MTQxIiB4MT0iMjIuMDk2MTYyIiBmaWxsLW9wYWNpdHk9Im51bGwiIHN0cm9rZS1vcGFjaXR5PSJudWxsIiBmaWxsPSJub25lIi8+CiAgICA8cGF0aCB0cmFuc2Zvcm09InJvdGF0ZSg5MCA0NS42Nzc3Njg3MDcyNzUzOSw2LjMwMTg5ODQ3OTQ2MTY3NCkgIiBpZD0ic3ZnXzE4IgogICAgICAgICAgZD0ibTQ1LjI5MzE1MSw2LjY4NjUxNGwwLC0wLjc2OTIzMWwwLjc2OTIzMSwwLjc2OTIzMWwtMC43NjkyMzEsMHoiIGZpbGwtb3BhY2l0eT0ibnVsbCIgc3Ryb2tlLW9wYWNpdHk9Im51bGwiCiAgICAgICAgICBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZT0iIzU1NSIgZmlsbD0ibm9uZSIvPgogICAgPHBhdGggdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDQ3Ljk4NTQ1ODM3NDAyMzQ0NSw4LjgwMTg5ODAwMjYyNDUxKSAiIGlkPSJzdmdfMTkiCiAgICAgICAgICBkPSJtNDcuNjAwODQyLDkuMTg2NTE0bDAsLTAuNzY5MjNsMC43NjkyMywwLjc2OTIzbC0wLjc2OTIzLDB6IiBmaWxsLW9wYWNpdHk9Im51bGwiIHN0cm9rZS1vcGFjaXR5PSJudWxsIgogICAgICAgICAgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiM1NTUiIGZpbGw9Im5vbmUiLz4KPC9zdmc+");
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    z-index: 5;
-} */
-.md-fences:hover,
-.auto-suggest-for-fences:hover {
-    border-radius: var(--hover-radius);
-    /* padding-top: 15px; */
-    /* padding-bottom: 15px; */
-    /* box-shadow: 0 20px 40px rgb(0 0 0 / 55%); */
+.cm-s-inner .cm-variable {
+    color: var(--text-color);
 }
 
-.CodeMirror.cm-s-inner {
-    border-radius: 15px;
-    padding: 15px 10px 10px 10px;
+.cm-s-inner {
+    padding: 0.25rem;
+    border-radius: 0.25rem;
 }
 
-.md-fences:hover::after {
-    content: attr(lang);
-    transition-duration: 200ms;
-    color: var(--color-tertiary-container);
-    text-shadow: 2px 2px 4px rgb(0 0 0 / 20%);
-    font-size: .8rem;
-    font-style: italic;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    z-index: 999;
-}
-
-.CodeMirror div.CodeMirror-cursor {
-    border-left: 1px solid var(--text-color) !important;
+.cm-s-inner.CodeMirror,
+.cm-s-inner .CodeMirror-gutters {
+    color: #3a3432 !important;
+    border: none;
 }
 
 .cm-s-inner .CodeMirror-gutters {
-    color: #404b53;
-    background-color: transparent;
-    border-right: 0
-}
-
-.CodeMirror {
-    background: #272822;
-    color: #f8f8f2
-}
-
-.cm-s-inner .CodeMirror-line::selection, .cm-s-inner .CodeMirror-line > span::selection, .cm-s-inner .CodeMirror-line > span > span::selection {
-    background: rgba(73, 72, 62, .99)
-}
-
-.cm-s-inner .CodeMirror-line::-moz-selection, .cm-s-inner .CodeMirror-line > span::-moz-selection, .cm-s-inner .CodeMirror-line > span > span::-moz-selection {
-    background: rgba(73, 72, 62, .99)
-}
-
-.cm-s-inner .CodeMirror-gutters {
-    background: #272822;
-    border-right: 0
-}
-
-.cm-s-inner .CodeMirror-guttermarker {
-    color: #fff
-}
-
-.cm-s-inner .CodeMirror-guttermarker-subtle {
-    color: #d0d0d0
+    color: #6d8a88;
 }
 
 .cm-s-inner .CodeMirror-linenumber {
-    color: #d0d0d0
-}
-
-.cm-s-inner .CodeMirror-cursor {
-    border-left: 1px solid #f8f8f0
-}
-
-.cm-s-inner span.cm-comment {
-    color: #75715e
-}
-
-.cm-s-inner span.cm-atom {
-    color: #ae81ff
-}
-
-.cm-s-inner span.cm-number {
-    color: #ae81ff
-}
-
-.cm-s-inner span.cm-comment.cm-attribute {
-    color: #97b757
-}
-
-.cm-s-inner span.cm-comment.cm-def {
-    color: #bc9262
-}
-
-.cm-s-inner span.cm-comment.cm-tag {
-    color: #bc6283
-}
-
-.cm-s-inner span.cm-comment.cm-type {
-    color: #5998a6
-}
-
-.cm-s-inner span.cm-attribute, .cm-s-inner span.cm-property {
-    color: #a6e22e
-}
-
-.cm-s-inner span.cm-keyword {
-    color: #f92672
-}
-
-.cm-s-inner span.cm-builtin {
-    color: #66d9ef
-}
-
-.cm-s-inner span.cm-string {
-    color: #e6db74
-}
-
-.cm-s-inner span.cm-variable {
-    color: #f8f8f2
-}
-
-.cm-s-inner span.cm-variable-2 {
-    color: #9effff
-}
-
-.cm-s-inner span.cm-type, .cm-s-inner span.cm-variable-3 {
-    color: #66d9ef
-}
-
-.cm-s-inner span.cm-def {
-    color: #fd971f
-}
-
-.cm-s-inner span.cm-bracket {
-    color: #f8f8f2
-}
-
-.cm-s-inner span.cm-tag {
-    color: #f92672
-}
-
-.cm-s-inner span.cm-header {
-    color: #ae81ff
-}
-
-.cm-s-inner span.cm-link {
-    color: #ae81ff
-}
-
-.cm-s-inner span.cm-error {
-    background: #f92672;
-    color: #f8f8f0
+    padding: 0 0.1rem 0 0.3rem;
+    color: #b8b5b4;
 }
 
 .cm-s-inner .CodeMirror-matchingbracket {
     text-decoration: underline;
-    color: #fff !important
+    color: #a34e8f !important;
+}
+
+#fences-auto-suggest .active {
+    background: #ddd;
+}
+
+.cm-s-inner span.cm-comment {
+    color: #9daab6;
+}
+
+.cm-s-inner span.cm-builtin {
+    color: #0451a5;
 }
 
 
+/* language tip */
+
+#write .code-tooltip {
+    border: 1px solid var(--border);
+}
+
+.auto-suggest-container {
+    border-color: #b4b4b4;
+}
+
+.auto-suggest-container .autoComplt-hint.active {
+    background: #b4b4b4;
+    color: inherit;
+}
+
+
+/* task list */
+
+#write .md-task-list-item>input {
+    -webkit-appearance: initial;
+    display: block;
+    position: absolute;
+    border: 1px solid #b4b4b4;
+    border-radius: 0.2rem;
+    margin-top: 0.3rem;
+    height: 1rem;
+    width: 1rem;
+    transition: background 0.3s;
+}
+
+#write .md-task-list-item>input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#write .md-task-list-item>input:hover {
+    background: #ddd;
+}
+
+#write .md-task-list-item>input[checked]::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    height: 60%;
+    width: 2px;
+    transform: rotate(40deg);
+    background: #333;
+}
+
+#write .md-task-list-item>input[checked]::after {
+    content: "";
+    position: absolute;
+    top: 46%;
+    left: 25%;
+    height: 30%;
+    width: 2px;
+    transform: rotate(-40deg);
+    background: #333;
+}
+
+#write .md-task-list-item>p {
+    transition: color 0.3s, opacity 0.3s;
+}
+
+#write .md-task-list-item.task-list-done>p {
+    color: #b4b4b4;
+    text-decoration: line-through;
+}
+
+#write .md-task-list-item.task-list-done>p>.md-emoji {
+    opacity: 0.5;
+}
+
+#write .md-task-list-item.task-list-done>p>.md-link>a {
+    opacity: 0.6;
+}
+
+
+/* sidebar */
+
+#typora-sidebar,
+.typora-node #typora-sidebar {
+    box-shadow: 3px 0px 10px var(--shadow-color);
+}
+
+.sidebar-content-content {
+    font-size: 0.9rem;
+}
+
  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
-</style><title></title>
+</style><title>15-nov-2022</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
 <div id='write'  class=''><h1 id='privacy-policy'><span>PRIVACY POLICY</span></h1><p><span> </span></p><p><span>Effective date: 15/November/2022</span></p><blockquote><p><span>This privacy policy is available as a </span><a href='https://privacy.pks.ai/15-nov-2022.pdf'><span>PDF</span></a><span>. It is also permanently located at </span><a href='https://privacy.pks.ai/15-nov-2022'><span>https://privacy.pks.ai/15-nov-2022</span></a><span>.</span></p></blockquote><p>&nbsp;</p><p><strong><span>1.</span></strong><span>   </span><strong><span>Introduction</span></strong></p><p><span> </span></p><p><span>Welcome to the </span><strong><span>Heimdall Intranet</span></strong><span>.</span></p><p><span> </span></p><p><span>Heimdall Intranet (“us”, “we”, or “our”) operates core.pks.ai and several other websites and applications including but not limited to HSCOne, My LGBT Support Network, Pepsi.Media, YourMum.Sex, AusTodon, and PepsiBot (hereinafter referred to as &quot;</span><strong><span>Services</span></strong><span>&quot;).</span></p><p><span> </span></p><p><span>Our Privacy Policy governs your visit to core.pks.ai and sdfgefgwsefewf mobile application, and explains how we collect, safeguard and disclose information that results from your use of our Service. </span></p><p><span> </span></p><p><span>We use your data to provide and improve Service. By using Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have the same meanings as in our Terms and Conditions.</span></p><p><span> </span></p><p><span>Our Terms and Conditions (</span><strong><span>Terms</span></strong><span>) govern all use of our Service and together with the Privacy Policy constitutes your agreement with us “</span><strong><span>agreement</span></strong><span>).</span></p><p><span> </span></p><p><strong><span>2.</span></strong><span>   </span><strong><span>Definitions</span></strong></p><p><span> </span></p><p><strong><span>SERVICES</span></strong><span> means the core.pks.ai website several other websites and applications including but not limited to HSCOne, My LGBT Support Network, Pepsi.Media, YourMum.Sex, AusTodon, and PepsiBot, operated by Heimdall Intranet.</span></p><p><span> </span></p><p><strong><span>PERSONAL DATA</span></strong><span> means data about a living individual who can be identified from those data (or from those and other information either in our possession or likely to come into our possession).</span></p><p><span> </span></p><p><strong><span>USAGE DATA</span></strong><span> is data collected automatically either generated by the use of Service or from Service infrastructure itself (for example, the duration of a page visit).</span></p><p><span> </span></p><p><strong><span>COOKIES</span></strong><span> are small files stored on your device (computer or mobile device).</span></p><p><span> </span></p><p><strong><span>DATA CONTROLLER</span></strong><span> means a natural or legal person who (either alone or jointly or in common with other persons) determines the purposes for which and the manner in which any personal data are, or are to be, processed. For the purpose of this Privacy Policy, we are a Data Controller of your data.</span></p><p><span> </span></p><p><strong><span>DATA PROCESSORS (OR SERVICE PROVIDERS)</span></strong><span> means any natural or legal person who processes the data on behalf of the Data Controller. We may use the services of various Service Providers in order to process your data more effectively.</span></p><p><span> </span></p><p><strong><span>DATA SUBJECT</span></strong><span> is any living individual who is the subject of Personal Data.</span></p><p><span> </span></p><p><strong><span>THE USER</span></strong><span> is the individual using our Service. The User corresponds to the Data Subject, who is the subject of Personal Data.</span></p><p><span> </span></p><p><strong><span>3.</span></strong><span>   </span><strong><span>Information Collection and Use</span></strong></p><p><span> </span></p><p><span>We collect several different types of information for various purposes to provide and improve our Service to you.</span></p><p><span> </span></p><p><strong><span>4.</span></strong><span>   </span><strong><span>Types of Data Collected</span></strong></p><p><span> </span></p><p><strong><span>Personal Data</span></strong></p><p><span>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you (“</span><strong><span>Personal Data</span></strong><span>”). Personally identifiable information may include, but is not limited to:</span></p><p><span> </span></p><p><span>(a)  Email address</span></p><p><span> </span></p><p><span>(b)  First name and last name</span></p><p><span> </span></p><p><span>(c)  Phone number</span></p><p><span> </span></p><p><span>(d)  Address, State, Province, ZIP/Postal code, City</span></p><p><span> </span></p><p><span>(e)  Cookies and Usage Data</span></p><p><span> </span></p><p><span>We may use your Personal Data to contact you with newsletters, marketing or promotional materials and other information that may be of interest to you. You may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or by emailing at support@pks.ai.</span></p><p><span> </span></p><p><strong><span>Usage Data</span></strong></p><p><span>We may also collect information that your browser sends whenever you visit our Service or when you access Service by or through a mobile device (“</span><strong><span>Usage Data</span></strong><span>”).</span></p><p><span> </span></p><p><span>This Usage Data may include information such as your computer&#39;s Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</span></p><p><span> </span></p><p><span>When you access Service with a mobile device, this Usage Data may include information such as the type of mobile device you use, your mobile device unique ID, the IP address of your mobile device, your mobile operating system, the type of mobile Internet browser you use, unique device identifiers and other diagnostic data.</span></p><p><span> </span></p><p><strong><span>Location Data</span></strong></p><p><span>We may use and store information about your location if you give us permission to do so (“</span><strong><span>Location Data</span></strong><span>”). We use this data to provide features of our Service, to improve and customize our Service.</span></p><p><span> </span></p><p><span>You can enable or disable location services when you use our Service at any time by way of your device settings.</span></p><p><span> </span></p><p><strong><span>Tracking Cookies Data</span></strong></p><p><span>We use cookies and similar tracking technologies to track the activity on our Service and we hold certain information.</span></p><p><span> </span></p><p><span>Cookies are files with a small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Other tracking technologies are also used such as beacons, tags and scripts to collect and track information and to improve and analyze our Service.</span></p><p><span> </span></p><p><span>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</span></p><p><span> </span></p><p><span>Examples of Cookies we use:</span></p><p><span> </span></p><p><span>(a)  </span><strong><span>Session Cookies:</span></strong><span> We use Session Cookies to operate our Service.</span></p><p><span> </span></p><p><span>(b)  </span><strong><span>Preference Cookies:</span></strong><span> We use Preference Cookies to remember your preferences and various settings.</span></p><p><span> </span></p><p><span>(c)  </span><strong><span>Security Cookies:</span></strong><span> We use Security Cookies for security purposes.</span></p><p><span> </span></p><p><span>(d)  </span><strong><span>Advertising Cookies:</span></strong><span> Advertising Cookies are used to serve you with advertisements that may be relevant to you and your interests.</span></p><p><span> </span></p><p><strong><span>Other Data</span></strong></p><p><span>While using our Service, we may also collect the following information: gender, sexual and romantic orientation, age, date of birth, place of birth, passport details, citizenship, registration at place of residence and actual address, telephone number (work, mobile), details of documents on education, qualification, professional training, employment agreements, non-disclosure agreements, information on bonuses and compensation, information on marital status, family members, social security (or other taxpayer identification) number, office location and other data. </span></p><p><span> </span></p><p><strong><span>5.</span></strong><span>   </span><strong><span>Use of Data</span></strong></p><p><span> </span></p><p><span>Heimdall Intranet uses the collected data for various purposes:</span></p><p><span> </span></p><p><span>(a)  to provide and maintain our Service;</span></p><p><span> </span></p><p><span>(b)  to notify you about changes to our Service; </span></p><p><span> </span></p><p><span>(c)  to allow you to participate in interactive features of our Service when you choose to do so; </span></p><p><span> </span></p><p><span>(d)  to provide customer support; </span></p><p><span> </span></p><p><span>(e)  to gather analysis or valuable information so that we can improve our Service; </span></p><p><span> </span></p><p><span>(f)  to monitor the usage of our Service;</span></p><p><span> </span></p><p><span>(g)  to detect, prevent and address technical issues;</span></p><p><span> </span></p><p><span>(h)  to fulfill any other purpose for which you provide it;</span></p><p><span> </span></p><p><span>(i)  to carry out our obligations and enforce our rights arising from any contracts entered into between you and us, including for billing and collection;</span></p><p><span> </span></p><p><span>(j)  to provide you with notices about your account and/or subscription, including expiration and renewal notices, email-instructions, etc.;</span></p><p><span> </span></p><p><span>(k)  to provide you with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless you have opted not to receive such information;</span></p><p><span> </span></p><p><span>(l)  in any other way we may describe when you provide the information;</span></p><p><span> </span></p><p><span>(m) for any other purpose with your consent. </span></p><p><span> </span></p><p><strong><span>6.</span></strong><span>   </span><strong><span>Retention of Data</span></strong></p><p><span> </span></p><p><span>We will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</span></p><p><span> </span></p><p><span>We will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period, except when this data is used to strengthen the security or to improve the functionality of our Service, or we are legally obligated to retain this data for longer time periods.</span></p><p><span> </span></p><p><strong><span>7.</span></strong><span>   </span><strong><span>Transfer of Data</span></strong></p><p><span> </span></p><p><span>Your information, including Personal Data, may be transferred to – and maintained on – computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction.</span></p><p><span> </span></p><p><span>If you are located outside United States and choose to provide information to us, please note that we transfer the data, including Personal Data, to United States and process it there.</span></p><p><span> </span></p><p><span>Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.</span></p><p><span> </span></p><p><span>Heimdall Intranet will take all the steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organisation or a country unless there are adequate controls in place including the security of your data and other personal information.</span></p><p><span> </span></p><p><strong><span>8.</span></strong><span>   </span><strong><span>Disclosure of Data</span></strong></p><p><span> </span></p><p><span>We may disclose personal information that we collect, or you provide:</span></p><p><span> </span></p><p><span>(a)  </span><strong><span>Disclosure for Law Enforcement.</span></strong></p><p><span>Under certain circumstances, we may be required to disclose your Personal Data if required to do so by law or in response to valid requests by public authorities.</span></p><p><span> </span></p><p><span>(b)  </span><strong><span>Business Transaction.</span></strong></p><p><span>If we or our subsidiaries are involved in a merger, acquisition or asset sale, your Personal Data may be transferred.</span></p><p><span> </span></p><p><span>(c) </span><strong><span>Other cases. We may disclose your information also:</span></strong></p><p><span> </span></p><p><span>(i)  to our subsidiaries and affiliates;</span></p><p><span> </span></p><p><span>(ii)  to contractors, service providers, and other third parties we use to support our business;</span></p><p><span> </span></p><p><span>(iii) to fulfill the purpose for which you provide it;</span></p><p><span> </span></p><p><span>(iv) for the purpose of including your company’s logo on our website;</span></p><p><span> </span></p><p><span>(v)  for any other purpose disclosed by us when you provide the information;</span></p><p><span> </span></p><p><span>(vi) with your consent in any other cases;</span></p><p><span> </span></p><p><span>(vii)if we believe disclosure is necessary or appropriate to protect the rights, property, or safety of the Company, our customers, or others.</span></p><p><span> </span></p><p><strong><span>9.</span></strong><span>   </span><strong><span>Security of Data</span></strong></p><p><span> </span></p><p><span>The security of your data is important to us but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</span></p><p><span> </span></p><p><strong><span>10.</span></strong><span> </span><strong><span>Your Data Protection Rights Under General Data Protection Regulation (GDPR)</span></strong></p><p><span> </span></p><p><span>If you are a resident of the European Union (EU) and European Economic Area (EEA), you have certain data protection rights, covered by GDPR. – See more at </span><a href='https://eur-lex.europa.eu/eli/reg/2016/679/oj' target='_blank' class='url'>https://eur-lex.europa.eu/eli/reg/2016/679/oj</a><span> </span></p><p><span> </span></p><p><span>We aim to take reasonable steps to allow you to correct, amend, delete, or limit the use of your Personal Data.</span></p><p><span> </span></p><p><span>If you wish to be informed what Personal Data we hold about you and if you want it to be removed from our systems, please email us at support@pks.ai. </span></p><p><span> </span></p><p><span>In certain circumstances, you have the following data protection rights:</span></p><p><span> </span></p><p><span>(a)  the right to access, update or to delete the information we have on you;</span></p><p><span> </span></p><p><span>(b)  the right of rectification. You have the right to have your information rectified if that information is inaccurate or incomplete;</span></p><p><span> </span></p><p><span>(c)  the right to object. You have the right to object to our processing of your Personal Data;</span></p><p><span> </span></p><p><span>(d)  the right of restriction. You have the right to request that we restrict the processing of your personal information;</span></p><p><span> </span></p><p><span>(e)  the right to data portability. You have the right to be provided with a copy of your Personal Data in a structured, machine-readable and commonly used format;</span></p><p><span> </span></p><p><span>(f)  the right to withdraw consent. You also have the right to withdraw your consent at any time where we rely on your consent to process your personal information;</span></p><p><span> </span></p><p><span>Please note that we may ask you to verify your identity before responding to such requests. Please note, we may not able to provide Service without some necessary data.</span></p><p><span> </span></p><p><span>You have the right to complain to a Data Protection Authority about our collection and use of your Personal Data. For more information, please contact your local data protection authority in the European Economic Area (EEA).</span></p><p><span> </span></p><p><strong><span>11.</span></strong><span> </span><strong><span>Your Data Protection Rights under the California Privacy Protection Act (CalOPPA)</span></strong></p><p><span> </span></p><p><span>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law’s reach stretches well beyond California to require a person or company in the United States (and conceivable the world) that operates websites collecting personally identifiable information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals with whom it is being shared, and to comply with this policy. – See more at: </span><a href='https://consumercal.org/about-cfc/cfc-education-foundation/california-online-privacy-protection-act-caloppa-3/' target='_blank' class='url'>https://consumercal.org/about-cfc/cfc-education-foundation/california-online-privacy-protection-act-caloppa-3/</a><span> </span></p><p><span> </span></p><p><span>According to CalOPPA we agree to the following:</span></p><p><span> </span></p><p><span>(a)  users can visit our site anonymously;</span></p><p><span> </span></p><p><span>(b)  our Privacy Policy link includes the word “Privacy”, and can easily be found on the page specified above on the home page of our website;</span></p><p><span> </span></p><p><span>(c)  users will be notified of any privacy policy changes on our Privacy Policy Page;</span></p><p><span> </span></p><p><span>(d)  users are able to change their personal information by emailing us at support@pks.ai. </span></p><p><span> </span></p><p><span>Our Policy on “Do Not Track” Signals:</span></p><p><span> </span></p><p><span>We honor Do Not Track signals and do not track, plant cookies, or use advertising when a Do Not Track browser mechanism is in place. Do Not Track is a preference you can set in your web browser to inform websites that you do not want to be tracked. </span></p><p><span> </span></p><p><span>You can enable or disable Do Not Track by visiting the Preferences or Settings page of your web browser.</span></p><p><span> </span></p><p><strong><span>12.</span></strong><span> </span><strong><span>Your Data Protection Rights under the California Consumer Privacy Act (CCPA)</span></strong></p><p><span> </span></p><p><span>If you are a California resident, you are entitled to learn what data we collect about you, ask to delete your data and not to sell (share) it. To exercise your data protection rights, you can make certain requests and ask us:</span></p><p><span> </span></p><p><span>(a)  </span><strong><span>What personal information we have about you</span></strong><span>. If you make this request, we will return to you:</span></p><p><span> </span></p><p><span>(i)  The categories of personal information we have collected about you.</span></p><p><span> </span></p><p><span>(ii)  The categories of sources from which we collect your personal information.</span></p><p><span> </span></p><p><span>(iii) The business or commercial purpose for collecting or selling your personal information.</span></p><p><span> </span></p><p><span>(iv) The categories of third parties with whom we share personal information.</span></p><p><span> </span></p><p><span>(v)  The specific pieces of personal information we have collected about you.</span></p><p><span> </span></p><p><span>(vi) A list of categories of personal information that we have sold, along with the category of any other company we sold it to. If we have not sold your personal information, we will inform you of that fact.</span></p><p><span> </span></p><p><span>(vii)A list of categories of personal information that we have disclosed for a business purpose, along with the category of any other company we shared it with.</span></p><p><span> </span></p><p><span>Please note, you are entitled to ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the personal information we collected about you in the previous 12 months.</span></p><p><span> </span></p><p><span>(b)  </span><strong><span>To delete your personal information</span></strong><span>. If you make this request, we will delete the personal information we hold about you as of the date of your request from our records and direct any service providers to do the same. In some cases, deletion may be accomplished through de-identification of the information. If you choose to delete your personal information, you may not be able to use certain functions that require your personal information to operate. </span></p><p><span> </span></p><p><span>(c)  </span><strong><span>To stop selling your personal information</span></strong><span>. We don&#39;t sell or rent your personal information to any third parties for any purpose. You are the only owner of your Personal Data and can request disclosure or deletion at any time.</span></p><p><span> </span></p><p><span>Please note, if you ask us to delete or stop selling your data, it may impact your experience with us, and you may not be able to participate in certain programs or membership services which require the usage of your personal information to function. But in no circumstances, we will discriminate against you for exercising your rights.</span></p><p><span> </span></p><p><span>To exercise your California data protection rights described above, please send your request(s) by one of the following means:</span></p><p><span> </span></p><p><span>By email: support@pks.ai</span></p><p><span> </span></p><p><span>By visiting this page on our website: </span><a href='https://pks.ai/privacy-form' target='_blank' class='url'>https://pks.ai/privacy-form</a></p><p><span> </span></p><p><span>Your data protection rights, described above, are covered by the CCPA, short for the California Consumer Privacy Act. To find out more, visit the official </span><a href='http://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=201720180AB375'><span>California Legislative Information website</span></a><span>. The CCPA took effect on 01/01/2020. </span></p><p><span> </span></p><p><strong><span>13.</span></strong><span> </span><strong><span>Service Providers</span></strong></p><p><span> </span></p><p><span>We may employ third party companies and individuals to facilitate our Service (“</span><strong><span>Service Providers</span></strong><span>”), provide Service on our behalf, perform Service-related services or assist us in analysing how our Service is used.</span></p><p><span> </span></p><p><span>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</span></p><p><span> </span></p><p><strong><span>14.</span></strong><span> </span><strong><span>Analytics</span></strong></p><p><span> </span></p><p><span>We may use third-party Service Providers to monitor and analyze the use of our Service.</span></p><p>&nbsp;</p><p><strong><span>Plausible Analytics</span></strong></p><p><span>Our primary user analytics system is a self-hosted Plausible Analytics server, the data from which is not accessible to anyone outside of the Heimdall Intranet. This analytics service entirely adheres to the policies set out in this document.</span></p><p><span> </span></p><p><strong><span>Google Analytics</span></strong></p><p><span>Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualise and personalise the ads of its own advertising network.</span></p><p><span> </span></p><p><span>For more information on the privacy practices of Google, please visit the Google Privacy Terms web page: </span><a href='https://policies.google.com/privacy?hl=en' target='_blank' class='url'>https://policies.google.com/privacy?hl=en</a></p><p><span> </span></p><p><span>We also encourage you to review the Google&#39;s policy for safeguarding your data: </span><a href='https://support.google.com/analytics/answer/6004245' target='_blank' class='url'>https://support.google.com/analytics/answer/6004245</a><span>.</span></p><p><span> </span></p><p><strong><span>Cloudflare analytics</span></strong></p><p><span>Cloudflare analytics is a web analytics service operated by Cloudflare Inc. Read the Privacy Policy here: </span><a href='https://www.cloudflare.com/privacypolicy/' target='_blank' class='url'>https://www.cloudflare.com/privacypolicy/</a><span> </span></p><p><span> </span></p><p><strong><span>Simple Analytics</span></strong></p><p><span>Simple Analytics is a web-based analysis tool</span></p><p><span> </span></p><p><span>For more information on what type of information Ackee collects, please visit their Privacy Policy page: </span><a href='https://simpleanalytics.com/privacy-policy' target='_blank' class='url'>https://simpleanalytics.com/privacy-policy</a></p><p><span> </span></p><p><strong><span>15.</span></strong><span> </span><strong><span>CI/CD tools</span></strong></p><p><span> </span></p><p><span>We may use third-party Service Providers to automate the development process of our Service. </span></p><p><span> </span></p><p><strong><span>GitHub</span></strong></p><p><span> </span></p><p><span>GitHub is provided by GitHub, Inc.</span></p><p><span> </span></p><p><span>GitHub is a development platform to host and review code, manage projects, and build software.</span></p><p><span> </span></p><p><span>For more information on what data GitHub collects for what purpose and how the protection of the data is ensured, please visit GitHub Privacy Policy page: </span><a href='https://help.github.com/en/articles/github-privacy-statement' target='_blank' class='url'>https://help.github.com/en/articles/github-privacy-statement</a><span>.</span></p><p><span> </span></p><p><strong><span>GitLab CI/CD</span></strong></p><p><span> </span></p><p><span>GitLab CI/CD is provided by GitLab, Inc.</span></p><p><span> </span></p><p><span>GitLab CI (Continuous Integration) service is a part of GitLab that build and test the software whenever developer pushes code to application. </span></p><p><span> </span></p><p><span>GitLab CD (Continuous Deployment) is a software service that places the changes of every code in the production which results in every day deployment of production. </span></p><p><span> </span></p><p><span>For more information on what data GitLab CI/CD collects for what purpose and how the protection of the data is ensured, please visit GitLab CI/CD Privacy Policy page: </span><a href='https://about.gitlab.com/privacy/' target='_blank' class='url'>https://about.gitlab.com/privacy/</a><span>.</span></p><p><span> </span></p><p><strong><span>Travis CI</span></strong></p><p><span> </span></p><p><span>Travis CI is a distributed continuous integration service to build and test projects hosted at GitHub.</span></p><p><span> </span></p><p><span>For more information on what data Travis CI collects for what purpose and how the protection of the data is ensured, please visit Travis CI Privacy Policy page: </span><a href='https://docs.travis-ci.com/legal/privacy-policy' target='_blank' class='url'>https://docs.travis-ci.com/legal/privacy-policy</a><span>.</span></p><p><span> </span></p><p><strong><span>CircleCI</span></strong></p><p><span> </span></p><p><span>CircleCI is provided by Circle Internet Services, Inc. </span></p><p><span> </span></p><p><span>CircleCI is Continuous Integration, a development practice which is being used by software teams allowing them to build, test and deploy applications easier and quicker on multiple platforms. </span></p><p><span> </span></p><p><span>For more information on what data Circle CI collects for what purpose and how the protection of the data is ensured, please visit Circle CI Privacy Policy page: </span><a href='https://circleci.com/privacy/' target='_blank' class='url'>https://circleci.com/privacy/</a><span>. </span></p><p><span> </span></p><p><strong><span>16.</span></strong><span> </span><strong><span>Advertising</span></strong></p><p><span> </span></p><p><span>We may use third-party Service Providers to show advertisements to you to help support and maintain our Service.</span></p><p><span> </span></p><p><strong><span>Google AdSense DoubleClick Cookie</span></strong></p><p><span>Google, as a third party vendor, uses cookies to serve ads on our Service. Google&#39;s use of the DoubleClick cookie enables it and its partners to serve ads to our users based on their visit to our Service or other websites on the Internet.</span></p><p><span> </span></p><p><span>You may opt out of the use of the DoubleClick Cookie for interest-based advertising by visiting the Google Ads Settings web page: </span><a href='http://www.google.com/ads/preferences/' target='_blank' class='url'>http://www.google.com/ads/preferences/</a></p><p><span> </span></p><p><strong><span>17.</span></strong><span> </span><strong><span>Behavioral Remarketing</span></strong></p><p><span> </span></p><p><span>Heimdall Intranet uses remarketing services to advertise on third party websites to you after you visited our Service. We and our third-party vendors use cookies to inform, optimise and serve ads based on your past visits to our Service.</span></p><p><span> </span></p><p><strong><span>Google Ads (AdWords)</span></strong></p><p><span>Google Ads (AdWords) remarketing service is provided by Google Inc.</span></p><p><span> </span></p><p><span>You can opt-out of Google Analytics for Display Advertising and customize the Google Display Network ads by visiting the Google Ads Settings page: </span><a href='http://www.google.com/settings/ads' target='_blank' class='url'>http://www.google.com/settings/ads</a></p><p><span> </span></p><p><span>Google also recommends installing the Google Analytics Opt-out Browser Add-on – </span><a href='https://tools.google.com/dlpage/gaoptout' target='_blank' class='url'>https://tools.google.com/dlpage/gaoptout</a><span> – for your web browser. Google Analytics Opt-out Browser Add-on provides visitors with the ability to prevent their data from being collected and used by Google Analytics.</span></p><p><span> </span></p><p><span>For more information on the privacy practices of Google, please visit the Google Privacy Terms web page: </span><a href='https://policies.google.com/privacy?hl=en' target='_blank' class='url'>https://policies.google.com/privacy?hl=en</a></p><p><span> </span></p><p><strong><span>Twitter</span></strong></p><p><span>Twitter remarketing service is provided by Twitter Inc.</span></p><p><span> </span></p><p><span>You can opt-out from Twitter&#39;s interest-based ads by following their instructions: </span><a href='https://support.twitter.com/articles/20170405' target='_blank' class='url'>https://support.twitter.com/articles/20170405</a></p><p><span> </span></p><p><span>You can learn more about the privacy practices and policies of Twitter by visiting their Privacy Policy page: </span><a href='https://twitter.com/privacy' target='_blank' class='url'>https://twitter.com/privacy</a></p><p><span> </span></p><p><strong><span>Facebook</span></strong></p><p><span>Facebook remarketing service is provided by Meta Inc.</span></p><p><span> </span></p><p><span>You can learn more about interest-based advertising from Facebook by visiting this page: </span><a href='https://www.facebook.com/help/164968693837950' target='_blank' class='url'>https://www.facebook.com/help/164968693837950</a></p><p><span> </span></p><p><span>To opt-out from Facebook&#39;s interest-based ads, follow these instructions from Facebook: </span><a href='https://www.facebook.com/help/568137493302217' target='_blank' class='url'>https://www.facebook.com/help/568137493302217</a></p><p><span> </span></p><p><span>Facebook adheres to the Self-Regulatory Principles for Online Behavioural Advertising established by the Digital Advertising Alliance. You can also opt-out from Facebook and other participating companies through the Digital Advertising Alliance in the USA </span><a href='http://www.aboutads.info/choices/' target='_blank' class='url'>http://www.aboutads.info/choices/</a><span>, the Digital Advertising Alliance of Canada in Canada </span><a href='http://youradchoices.ca/' target='_blank' class='url'>http://youradchoices.ca/</a><span> or the European Interactive Digital Advertising Alliance in Europe </span><a href='http://www.youronlinechoices.eu/' target='_blank' class='url'>http://www.youronlinechoices.eu/</a><span>, or opt-out using your mobile device settings.</span></p><p><span> </span></p><p><span>For more information on the privacy practices of Facebook, please visit Facebook&#39;s Data Policy: </span><a href='https://www.facebook.com/privacy/explanation' target='_blank' class='url'>https://www.facebook.com/privacy/explanation</a></p><p><span> </span></p><p><strong><span>Pinterest</span></strong></p><p><span>Pinterest remarketing service is provided by Pinterest Inc.</span></p><p><span> </span></p><p><span>You can opt-out from Pinterest&#39;s interest-based ads by enabling the “Do Not Track” functionality of your web browser or by following Pinterest instructions: </span><a href='http://help.pinterest.com/en/articles/personalization-and-data' target='_blank' class='url'>http://help.pinterest.com/en/articles/personalization-and-data</a></p><p><span> </span></p><p><span>You can learn more about the privacy practices and policies of Pinterest by visiting their Privacy Policy page: </span><a href='https://about.pinterest.com/en/privacy-policy' target='_blank' class='url'>https://about.pinterest.com/en/privacy-policy</a></p><p><span> </span></p><p><strong><span>18.</span></strong><span> </span><strong><span>Payments</span></strong></p><p><span> </span></p><p><span>We may provide paid products and/or services within Service. In that case, we use third-party services for payment processing (e.g. payment processors).</span></p><p><span> </span></p><p><span>We will not store or collect your payment card details. That information is provided directly to our third-party payment processors whose use of your personal information is governed by their Privacy Policy. These payment processors adhere to the standards set by PCI-DSS as managed by the PCI Security Standards Council, which is a joint effort of brands like Visa, Mastercard, American Express and Discover. PCI-DSS requirements help ensure the secure handling of payment information.</span></p><p><span> </span></p><p><span>The payment processors we work with are:</span></p><p><span> </span></p><p><span>PayPal or Braintree:</span></p><p><span>Their Privacy Policy can be viewed at </span><a href='https://www.paypal.com/webapps/mpp/ua/privacy-full' target='_blank' class='url'>https://www.paypal.com/webapps/mpp/ua/privacy-full</a></p><p><span> </span></p><p><span>Apple Store In-App Payments:</span></p><p><span>Their Privacy Policy can be viewed at: </span><a href='https://www.apple.com/legal/privacy/en-ww/' target='_blank' class='url'>https://www.apple.com/legal/privacy/en-ww/</a><span> / </span><a href='https://support.apple.com/en-us/HT203027' target='_blank' class='url'>https://support.apple.com/en-us/HT203027</a><span> </span></p><p><span> </span></p><p><span>Google Play In-App Payments:</span></p><p><span>Their Privacy Policy can be viewed at: </span><a href='https://policies.google.com/privacy?hl=en&amp;gl=us' target='_blank' class='url'>https://policies.google.com/privacy?hl=en&gl=us</a><span> / </span><a href='https://payments.google.com/payments/apis-secure/u/0/get_legal_document?ldo=0&amp;ldt=privacynotice&amp;ldl=en' target='_blank' class='url'>https://payments.google.com/payments/apis-secure/u/0/get_legal_document?ldo=0&ldt=privacynotice&ldl=en</a><span> </span></p><p><span> </span></p><p><span>Stripe:</span></p><p><span>Their Privacy Policy can be viewed at: </span><a href='https://stripe.com/us/privacy' target='_blank' class='url'>https://stripe.com/us/privacy</a></p><p><span> </span></p><p><span>Square:</span></p><p><span>Their Privacy Policy can be viewed at: </span><a href='https://squareup.com/us/en/legal/general/privacy' target='_blank' class='url'>https://squareup.com/us/en/legal/general/privacy</a><span> </span></p><p><span> </span></p><p><strong><span>19.</span></strong><span> </span><strong><span>Links to Other Sites</span></strong></p><p><span> </span></p><p><span>Our Service may contain links to other sites that are not operated by us. If you click a third party link, you will be directed to that third party&#39;s site. We strongly advise you to review the Privacy Policy of every site you visit.</span></p><p><span> </span></p><p><span>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</span></p><p><span> </span></p><p><strong><span>20.</span></strong><span> </span><strong><span>Children&#39;s Privacy</span></strong></p><p><span> </span></p><p><span>Our Services are not intended for use by children under the age of 13 (“</span><strong><span>Children</span></strong><span>”). </span></p><p><span> </span></p><p><span>We do not knowingly collect personally identifiable information from Children under 13. If you become aware that a Child has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from Children without verification of parental consent, we take steps to remove that information from our servers.</span></p><p><span> </span></p><p><strong><span>21.</span></strong><span> </span><strong><span>Changes to This Privacy Policy</span></strong></p><p><span> </span></p><p><span>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</span></p><p><span> </span></p><p><span>We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update “effective date” at the top of this Privacy Policy.</span></p><p><span> </span></p><p><span>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</span></p><p><span> </span></p><p><strong><span>22.</span></strong><span> </span><strong><span>Contact Us</span></strong></p><p><span> </span></p><p><span>If you have any questions about this Privacy Policy, please contact us:</span></p><p><span> </span></p><p><span>By email: support@pks.ai.</span></p><p><span> </span></p><p><span>By visiting this page on our website: </span><a href='https://pks.ai/privacy-form' target='_blank' class='url'>https://pks.ai/privacy-form</a><span>.</span></p><p><span> </span></p></div></div>
